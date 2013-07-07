@@ -3,6 +3,7 @@
 <head> 
 	<title>Flash Cards</title> 
 	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<link rel="stylesheet" href="jquery.mobile-1.3.1.min.css" />
 	<script src="jquery-1.8.2.min.js"></script>
 	<script src="jquery.mobile-1.3.1.min.js"></script>
@@ -11,15 +12,23 @@
 	</style>
 	<script language="javascript">
 	$(document).bind('pageinit', function () {
+		$.support.cors = true;
+		$.mobile.allowCrossDomainPages = true;
 		var url ='http://preetham.in/private/tools/wordmaster/index.php/api/word/recent/100';
-		$.get(url, function(response) {
-			//alert(response);
-			for(word in person)
+		
+		//$('.collapsible-set').html($('.collapsible-set').html() + '	<div data-role="collapsible"><h3>' + 'word' + '</h3><p>meaning here</p></div>');
+		//$('.collapsible-set').html($('.collapsible-set').html() + '	<div data-role="collapsible"><h3>' + 'word' + '</h3><p>meaning here</p></div>');
+		
+		$.ajax(url,{crossDomain:true,
+				   success:function(response) {
+			response = jQuery.parseJSON(response);
+			alert(response);
+			for(word in response)
 			{
 				$('.collapsible-set').html($('.collapsible-set').html() + '	<div data-role="collapsible"><h3>' + word.word + '</h3><p>meaning here</p></div>');
 			}
 		},
-		"json");
+		dataType:"json"});
 		
 	
 	});
