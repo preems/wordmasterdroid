@@ -13,8 +13,13 @@
 	$(document).bind('pageinit', function () {
 		var url ='http://preetham.in/private/tools/wordmaster/index.php/api/word/recent/100';
 		$.get(url, function(response) {
-			alert(response);
-		});
+			//alert(response);
+			for(word in person)
+			{
+				$('.collapsible-set').html($('.collapsible-set').html() + '	<div data-role="collapsible"><h3>' + word.word + '</h3>');
+			}
+		},
+		"json");
 		
 	
 	});
@@ -29,7 +34,7 @@
 	</div><!-- /header -->
 
 	<div data-role="content" class="content">	
-			<div data-role="collapsible-set" data-theme="c" data-inset="false" data-content-theme="d">
+			<div data-role="collapsible-set" class="collapsible-set" data-theme="c" data-inset="false" data-content-theme="d">
 				
 				<div data-role="collapsible">
 					<h3>Section 1</h3>
