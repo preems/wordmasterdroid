@@ -20,10 +20,11 @@
 		//$('.collapsible-set').html($('.collapsible-set').html() + '	<div data-role="collapsible"><h3>' + 'word' + '</h3><p>meaning here</p></div>');
 		
 		$.get(url, function(response) {
+			response = jQuery.parseJSON(response)
 			alert(response);
 			for(word in response)
 			{
-				$('.collapsible-set').html($('.collapsible-set').html() + '	<div data-role="collapsible"><h3>' + word.word + '</h3><p>meaning here</p></div>');
+				$('.collapsible-set').html($('.collapsible-set').html() + '	<div data-role="collapsible"><h3>' + word.word + '</h3><p>'+ word.meaning +'</p></div>');
 			}
 		},
 		"json");
