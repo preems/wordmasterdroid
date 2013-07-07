@@ -19,16 +19,14 @@
 		//$('.collapsible-set').html($('.collapsible-set').html() + '	<div data-role="collapsible"><h3>' + 'word' + '</h3><p>meaning here</p></div>');
 		//$('.collapsible-set').html($('.collapsible-set').html() + '	<div data-role="collapsible"><h3>' + 'word' + '</h3><p>meaning here</p></div>');
 		
-		$.ajax(url,{crossDomain:true,
-				   success:function(response) {
-			response = jQuery.parseJSON(response);
+		$.get(url, function(response) {
 			alert(response);
 			for(word in response)
 			{
 				$('.collapsible-set').html($('.collapsible-set').html() + '	<div data-role="collapsible"><h3>' + word.word + '</h3><p>meaning here</p></div>');
 			}
 		},
-		dataType:"json"});
+		"json");
 		
 	
 	});
