@@ -15,19 +15,22 @@
 		$.support.cors = true;
 		$.mobile.allowCrossDomainPages = true;
 		var url ='http://preetham.in/private/tools/wordmaster/index.php/api/word/recent/100';
+		//var url ='json.js';
 		
 		//$('.collapsible-set').html($('.collapsible-set').html() + '	<div data-role="collapsible"><h3>' + 'word' + '</h3><p>meaning here</p></div>');
 		//$('.collapsible-set').html($('.collapsible-set').html() + '	<div data-role="collapsible"><h3>' + 'word' + '</h3><p>meaning here</p></div>');
 		
 		$.get(url, function(response) {
-			response = jQuery.parseJSON(response)
-			alert(response);
-			for(word in response)
+			//alert(response);
+			for(i=0;i<response.length;i++)
 			{
-				$('.collapsible-set').html($('.collapsible-set').html() + '	<div data-role="collapsible"><h3>' + word.word + '</h3><p>'+ word.meaning +'</p></div>');
+				word = response[i];
+				$('.collapsible-set').html($('.collapsible-set').html() + '	<div data-role="collapsible"><h3>' + word.word + '</h3><p><u><b>'+word.simplemeaning + '</p></u></b><p>'+ word.meaning +'</p><hr/><p><i>'+ word.usage +'</i></p></div>');
 			}
+			$( ".collapsible-set" ).collapsibleset( "refresh" );
 		},
 		"json");
+		
 		
 	
 	});
@@ -43,7 +46,7 @@
 
 	<div data-role="content" class="content">	
 			<div data-role="collapsible-set" class="collapsible-set" data-theme="c" data-inset="false" data-content-theme="d">
-				
+				<!--
 				<div data-role="collapsible">
 					<h3>Section 1</h3>
 					<p>I'm the collapsible content for section 1</p>
@@ -57,7 +60,7 @@
 					<h3>Section 3</h3>
 					<p>I'm the collapsible content for section 3</p>
 				</div>
-			</div><!-- /collapsible-set -->
+			</div> -->  <!-- /collapsible-set --> 
 		
 	</div><!-- /content -->
 	
